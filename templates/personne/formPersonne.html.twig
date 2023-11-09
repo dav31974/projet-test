@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block title %}créer personne
+{% endblock %}
+{% block body %}
+	<div class="container">
+		{% if app.request.attributes.get('_route') == 'personne_create' %}
+			<h1>Création de la personne</h1>
+		{% else %}
+			<h1>Modification des données de la personne
+			</h1>
+		{% endif %}
+
+
+		{{ form_start(form) }}
+		{{ form_errors(form) }}
+		<div class="row">
+			<div class="col">
+				{{ form_row(form.nom) }}
+			</div>
+			<div class="col">
+				{{ form_row(form.birthAt) }}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				{{ form_row(form.taille) }}
+				{{ form_row(form.nbrefreresoeur) }}
+			</div>
+			<div class="col">
+				{{ form_row(form.codepostal) }}
+				{{ form_row(form.infos) }}
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary mt-2">
+			<i class="fas fa-save"></i>
+			{% if app.request.attributes.get('_route') == 'personne_create' %}Ajouter la personne
+			{% else %}
+				Sauvegarder les modifications
+			{% endif %}
+		</button>
+		{{ form_end(form) }}
+
+	</div>
+{% endblock %}
